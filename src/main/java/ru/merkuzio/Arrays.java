@@ -1,10 +1,6 @@
 package ru.merkuzio;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Arrays {
 
@@ -13,11 +9,13 @@ public class Arrays {
         LinkedListExample linkedListExample = new LinkedListExample();
         HashSetExample hashSetExample = new HashSetExample();
         HashMapExample hashMapExample = new HashMapExample();
+        DequeExample dequeExample = new DequeExample();
 
         arrayListExample.demo();
         linkedListExample.demo();
         hashSetExample.demo();
         hashMapExample.demo();
+        dequeExample.demo();
     }
 
     private static class ArrayListExample {
@@ -166,6 +164,40 @@ public class Arrays {
                 }
             }
             System.out.println("Not found: " + key);
+        }
+    }
+
+    private static class DequeExample {
+        private Deque<String> deque = new ArrayDeque<>();
+
+        void demo() {
+            System.out.println("Deque Example:");
+            add("One");
+            add("Two");
+            add("Three");
+            remove();
+            search("One");
+            search("Two");
+        }
+
+        void add(String value) {
+            deque.offerLast(value);
+            System.out.println("Added: " + value);
+            System.out.println("Deque at the moment: " + deque);
+        }
+
+        void remove() {
+            String removed = deque.pollFirst();
+            System.out.println("Removed: " + removed);
+            System.out.println("Deque at the moment: " + deque);
+        }
+
+        void search(String value) {
+            if (deque.contains(value)) {
+                System.out.println("Found: " + value);
+            } else {
+                System.out.println("Not found: " + value);
+            }
         }
     }
 }
